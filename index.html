@@ -22,9 +22,11 @@
         }
 
         body {
+            background-image: url("loop.gif");
+            background-repeat: repeat;
             margin: 0;
             height: 100vh;
-            background-color: black;
+            background-color: rgb(255, 255, 255);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,7 +35,7 @@
         h1 {
             font-family: 'Alte Haas Grotesk Bold', sans-serif;
             font-size: 3rem;
-            color: white;
+            color: rgb(0, 0, 0);
             margin: 0;
         }
     </style>
@@ -49,10 +51,17 @@
         <label for="geoip_webtoken">nginx mobile:</label>
         <input type="number" id="mobile" name="num" value="(316)-413-3045" readonly>
       </form>
+
+
+    
       
-    <h1>You realy thought you did something huh LOL</h1>
-    <p>Secure your shit next time before trying to mess with people jackass</p>
+    <h1>fixed your stupid website chip</h1>
+    <h2>turn on autoplay lol</h2>
     <img src="GETFUCKED.jpg" alt="GETFUCKED">
+
+    <audio id="circus" src="circus.mp3" autoplay loop>
+        Your browser does not support the audio element.
+    </audio>
 
     <audio id="soundEffect" preload="auto">
         <source src="belch.wav" type="audio/wav">
@@ -61,8 +70,20 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var audioElement = document.getElementById('soundEffect');
-            audioElement.play();
+            var backgroundSong = document.getElementById('backgroundSong');
+            backgroundSong.play().then(function() {
+                // The audio started playing automatically.
+            }).catch(function(error) {
+                // Autoplay was prevented. Add event listeners to start the audio after user interaction.
+                function startBackgroundSong() {
+                    backgroundSong.play();
+                    document.removeEventListener('click', startBackgroundSong);
+                    document.removeEventListener('touchstart', startBackgroundSong);
+                }
+
+                document.addEventListener('click', startBackgroundSong);
+                document.addEventListener('touchstart', startBackgroundSong);
+            });
         });
     </script>
 <!--                     ,%@((///////////////////@@@,,                              
