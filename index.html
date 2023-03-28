@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMING SOON</title>
+    <meta name="viewport" content="width=device-width, initial-scale=4.0">
+    <title>IT'S OVER.</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PIPCA.PARTY">
-    <meta name="twitter:description" content="It's just getting started.">
+    <meta name="twitter:title" content="IT'S OVER">
+    <meta name="twitter:description" content="IT'S NEVER BEEN MORE OVER THAN IT IS AT THIS MOMENT">
     <meta name="twitter:image" content="https://i.ibb.co/ZKXpBtW/thumb.png">
     <meta name="twitter:creator" content="@fractalcounty">
+
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 
     <style>
         @font-face {
@@ -22,11 +24,9 @@
         }
 
         body {
-            background-image: url("loop.gif");
-            background-repeat: repeat;
             margin: 0;
             height: 100vh;
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,33 +35,153 @@
         h1 {
             font-family: 'Alte Haas Grotesk Bold', sans-serif;
             font-size: 3rem;
-            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
             margin: 0;
+            text-align: center;
+        }
+
+        .bgLayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            display: none;
+            background-size: 200px 300px;
+        }
+
+        #bgLayer1 {
+            background-image: url('griddy.gif');
+            background-repeat: repeat;
+            opacity: 0.5;
+        }
+
+        #bgLayer2 {
+            background-image: url('griddy.gif');
+            background-repeat: repeat;
+            opacity: 0.5;
+        }
+
+        .activated .bgLayer {
+            display: block;
+        }
+
+        .activated #bgLayer1 {
+            animation: scroll-bg1 6s ease infinite;
+        }
+
+        .activated #bgLayer2 {
+            animation: scroll-bg2 4s ease infinite;
+        }
+
+        .news-ticker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150%;
+            height: 100;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px 0;
+            font-family: 'Alte Haas Grotesk Bold', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        .ticker-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-text 30s linear infinite;
+        }
+
+        @keyframes scroll-text {
+            0% {
+                transform: translateX(50%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        
+        @keyframes scroll-bg1 {
+            0% {
+                background-position: 0 0, 0 0;
+            }
+            100% {
+                background-position: 100px 100px, -100px -100px;
+            }
+        }
+
+            @keyframes scroll-bg2 {
+            0% {
+                background-position: 0 0, 0 0;
+            }
+            100% {
+                background-position: -100px -100px, 100px 100px;
+            }
+        }
+
+        @keyframes rainbow-text {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: lime; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+
+        .rainbow-text {
+            animation: rainbow-text 5s ease infinite;
         }
     </style>
 </head>
 <body>
+    <div class="news-ticker">
+        <div class="ticker-text">
+            THANK YOU FOR CALLING INTO THE FRACTAL COUNTY HOTLINE !! FOR THOSE THAT SHOWED SUPPORT OR GENUINE CONCERN, I CERTAINLY DO APPRECIATE IT. FOR THOSE THAT DIDN'T, THANK YOU FOR THE VOICELINES- THEY WILL GO TO GOOD USE IN MY GAME. COMING SOON!!!! 
+        </div>
+    </div>
+    
+    <div id="bgLayer1" class="bgLayer"></div>
+    <div id="bgLayer2" class="bgLayer"></div>
     <form id="nginx-credentials" style="display:none;">
-        <label for="fracalcounty">Username:</label>
-        <input type="text" id="username" name="fractalcounty" value="evan_anderson" readonly>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" value="1sgtbraphog123!" readonly>
-        <label for="geoip_webtoken">Cached GeoIP token origin:</label>
-        <input type="fingerprint_address" id="address" name="address" value="456 Sigley Road, St George KS 67204" readonly>
-        <label for="geoip_webtoken">nginx mobile:</label>
-        <input type="number" id="mobile" name="num" value="(316)-413-3045" readonly>
+        <!-- Thank you for calling into the Fractal County hotline! -->
+        <!-- For those that showed support or genuine concern, I appreciate it -->
+        <!-- For those who didn't- thank you for the voicelines! The game will be out soon -->
+        <!-- With Love, Chip -->
       </form>
-
-
     
       
-    <h1>fixed your stupid website chip</h1>
-    <h2>turn on autoplay lol</h2>
-    <img src="GETFUCKED.jpg" alt="GETFUCKED">
+    <h1 id="textElement" onclick="changeText(); party.confetti(this); playSurpriseSound(); changeMusic()">
+        <div>
+            <span id="overText">IT'S OVER.</span>
+        </div>
+        <div>
+            <span id="startedText" style="display: none;">IT'S JUST GETTING STARTED.</span>
+        </div>
+    </h1>
+    
 
-    <audio id="circus" src="circus.mp3" autoplay loop>
+
+    <audio id="over" src="menu.ogg" autoplay loop>
         Your browser does not support the audio element.
     </audio>
+
+    <audio id="surpriseSound" preload="auto">
+        <source src="surprise.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="cado" preload="auto">
+        <source src="cado.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+    
 
     <audio id="soundEffect" preload="auto">
         <source src="belch.wav" type="audio/wav">
@@ -69,6 +189,26 @@
     </audio>
 
     <script>
+        function changeText() {
+            var overText = document.getElementById('overText');
+            var startedText = document.getElementById('startedText');
+            var bodyElement = document.querySelector('body');
+            overText.style.textDecoration = "line-through";
+            startedText.style.display = "inline";
+            bodyElement.classList.add('activated');
+            startedText.classList.add('rainbow-text');
+        }
+
+        function playSurpriseSound() {
+            var surpriseSound = document.getElementById('surpriseSound');
+            surpriseSound.play();
+        }
+        function changeMusic() {
+            var over = document.getElementById('over');
+            var cado = document.getElementById('cado');
+            over.pause();
+            cado.play();
+        }
         document.addEventListener('DOMContentLoaded', function() {
             var backgroundSong = document.getElementById('backgroundSong');
             backgroundSong.play().then(function() {
@@ -86,38 +226,5 @@
             });
         });
     </script>
-<!--                     ,%@((///////////////////@@@,,                              
-                   (%(((/////////////////////////(@                             
-                  &(((////////////////////////////(&                            
-                 .@(///////////////////////////////#@                           
-                  @/(///////////////////////////////%%                          
-                  /&(////////////////////////////////#@                         
-                    %&/////////////////////////////(//%#                        
-                      (@(///////////////////////////////#%,                     
-                         *@#////(////////////////(/////////&@&#,   ,,%%%%%,     
-                            ,&&##&@@@@@@@@@(((///@&(/(/////////////////////@/   
-                      ./(@@@@@@@(*((@@@@%&%########%@////////////////////(@.    
-                     .@@@@@  .,#@%%%@@@@@@@@@@@@@@@@@@/////////////////&(       
-                    ,@@@&    @@@@@@@@@@@    @@@@@@@@@@&../&&@@@@@@&&,           
-                   *&@#   @*......@@@@#   ,@@@@@@@@        @ ./.*@              
-                (@,.....&# ...*...@@@    @@@@@@@@@........ ..%&&&@              
-              #@. .... *@@@@@&& .  .....&&&&&&*.. ...........  .&(              
-             (%....... . . . . . . /@...........................  @.            
-            (@........%%........ ... @(............................&#           
-            @....*@&.... .............@ ........................ ....@          
-            @.. (&.............. .....................................*&        
-%##@@@@@@@@&@.. ..#@&....*&@,. ......... ............................. .#&      
-############%@...... .....................................................&(    
-#############@......................................................... .#&###%%
-/(/((((@@@(/(@@.......................................................@#########
-(//(@//%&///(@&@ .................................................(@@@@@@@@@@@@&
-@#///%@(/(@/  . (&.............................................&&///(/@/////(@#/
-//(@((///(@ .      @@  ..@@@@@@@@@@@@@@@@@(.. ........ .. ..@@////(//(@@///@////
-//(@/(////@     .@. ,@% ..               .. . %@(*@@@%%,.,,@(////@(////(/@/(////
-///@(#@@*.##     .@@             . .  ##@@@//..........,.&#/(///(&&(////@///////
-/@@,.......,@. .  .   .     @@@@@/,.....................@///(%@/////////@///////
-..........,,,.&@ **@@&%...,..,,...,...................,@((@#////////////#@(/////
-...............%#.,..,................................,@/////////////////(@/@///
- -->
 </body>
 </html>
